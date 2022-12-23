@@ -1,0 +1,40 @@
+type Query {
+    getMatch : [MatchRespenseDtos]
+}
+
+type Mutation {
+    addGame(matchRequestDtos : MatchRequestDtos) : MatchRespenseDtos
+    getTicket(ticketRequestDto : TicketRequestDto) : TicketResponseDto
+    updateTicket(id : String) : Boolean
+}
+
+##inputs
+input TicketRequestDto{
+    price : Float,
+    MatchId : String
+}
+
+input MatchRequestDtos{
+    date : String,
+    lieux : String,
+    equipe1 : String
+    equipe2 : String,
+    NombreTickets : Int
+}
+##types
+type MatchRespenseDtos {
+    id : ID,
+    ref : String,
+    date : String,
+    lieux : String,
+    equipe1 : String,
+    equipe2 : String
+}
+
+type TicketResponseDto {
+    id : ID,
+    price : Float,
+    lieux : String,
+    ref : String,
+    MatchRespenseDtos : MatchRespenseDtos
+}
